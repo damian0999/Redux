@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise 1</title>
+    <!-- redux -->
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>
+        Clicked: <span id="value">0</span> times
+        <button id="decrement">Decrease</button>
+        <button id="incrementAsync">Increment async</button>
+      </p>
+    </div>
+    <script>
+      var store = Redux.createStore(current);
+      var valueEl = document.getElementById('value');
+      function render(){
+        valueEl.innerHTML = store.getState().count;
+      }
+      render();
+      store.subscribe(render);
+
+      function current(currentState, action){
+        var DEFAULT_STATE = {count: 0};
+        var nextState = Object.assign({},currentState);
+        if(currentState === undefined){
+          nextState = DEFAULT_STATE;
+          return nextState;
+        }
+        switch(action.type){
+          case 'DECREMENT':
+            nextState.count = currentState.count - 1;
+            return nextState;
+          default:
+            return nextState;
+        }
+      }
+      document.getElementById('decrement')
+        .addEventListener('click', function(){
+          var action = {type: 'DECREMENT'};
+          store.dispatch(action);
+        })
+        document.getElementById('incrementAsync')
+          .addEventListener('click', function () {
+            setTimeout(
+              function increment () {
+                valueEl.innerHTML = parseInt(valueEl.innerHTML) + 1;
+              }
+            , 1000); // execute increment () method after 1000 millisecond or 1 second
+          })
+    </script>
+  </body>
+</html>
