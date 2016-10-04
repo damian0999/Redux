@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise 1</title>
+    <!-- redux -->
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <script src="action/index.js"></script>
+    <script src="reducer/index.js"></script>
+  </head>
+  <body>
+    <div class="incrementButtons">
+      <p>
+        Clicked: <span id="value">0</span> times
+        <button id="decrement">Decrease</button>
+        <button id="incrementAsync">Increment async</button>
+        <button id="clear">Clear</button>
+      </p>
+    </div>
+    <div class="calculator">
+      <input type="text" id='a' value='0' style='width: 50px'>
+      +
+      <input type="text" id='b' value='0' style='width: 50px'>
+      =
+      <span id='value2'> 0 </span>
+      <button type="button" id='sum'>Sum</button>
+    </div>
+    <script>
+        document.getElementById('decrement')
+          .addEventListener('click', function(){
+            store.dispatch(decrement());
+        })
+        document.getElementById('incrementAsync')
+          .addEventListener('click', function () {
+            store.dispatch(increment());
+        })
+        document.getElementById('clear')
+          .addEventListener('click', function(){
+            store.dispatch(clear());
+        })
+        document.getElementById('sum')
+          .addEventListener('click', function(){
+            var a = document.getElementById('a').value;
+            var b = document.getElementById('b').value;
+            store.dispatch(getSum(a,b));
+        })
+    </script>
+    <script src='index.js'></script>
+  </body>
+</html>
