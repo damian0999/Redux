@@ -14,9 +14,9 @@ var clear = function(){
   };
 }
 var getSum = function(a, b){
-    return{
-      type: 'SUM',
-      a:a,
-      b:b
-    };
+  return{
+    type: 'SUM',
+    a:a,
+    b:b
+  };
 }
