@@ -20,8 +20,19 @@ const crashReporter = function(store){
     }
   }
 }
+const thunk = function(store){
+  return function(next) {
+    return function(action) {
+      if(typeof action === 'function'){
+        action(store.dispatch, store.getState());
+      } else {
+        next(action)
+      }
+    }
+  }
+}
 
-var store = Redux.createStore(combineReducer, Redux.applyMiddleware(logger, crashReporter));
+var store = Redux.createStore(combineReducer, Redux.applyMiddleware(logger, crashReporter, thunk));
 function render(){
   var state = store.getState();
   document.getElementById('value').innerHTML = state.count;

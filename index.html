@@ -5,6 +5,7 @@
     <title>Exercise 1</title>
     <!-- redux -->
     <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <script src="_fakeServerApi/index.js"></script>
     <script src="action/index.js"></script>
     <script src="reducer/index.js"></script>
     <script src="reducer/sum.js"></script>
@@ -34,7 +35,7 @@
         })
         document.getElementById('incrementAsync')
           .addEventListener('click', function () {
-            store.dispatch(increment());
+            store.dispatch(asyncIncrease);
         })
         document.getElementById('clear')
           .addEventListener('click', function(){

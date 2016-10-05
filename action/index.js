@@ -20,3 +20,11 @@ var getSum = function(a, b){
     b:b
   };
 }
+
+var asyncIncrease = function(dispach, state){
+  _fakeServerApi.increaseCount(state.count.result,
+    function(data){
+      dispach({type: 'INCREMENT'});
+    }
+  );
+}
