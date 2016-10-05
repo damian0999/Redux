@@ -5,10 +5,12 @@
     <title>Exercise 1</title>
     <!-- redux -->
     <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="_fakeServerApi/index.js"></script>
     <script src="middleware/index.js"></script>
     <script src="action/index.js"></script>
     <script src="reducer/index.js"></script>
+    <script src="reducer/images.js"></script>
     <script src="reducer/sum.js"></script>
     <script src="reducer/counter.js"></script>
   </head>
@@ -22,6 +24,7 @@
         <br /> CountStatus: <span id='status' style='color: blue'></span>
       </p>
     </div>
+    <hr />
     <div class="calculator">
       <input type="text" id='a' value='0' style='width: 50px'>
       +
@@ -29,6 +32,12 @@
       =
       <span id='value2'> 0 </span>
       <button type="button" id='sum'>Sum</button>
+    </div>
+    <hr />
+    <div class="randomImage">
+      <button type="button" id='randomImagesButton'>Random Image</button>
+      <br />CountStatus: <span id='imageStatus' style='color: blue'></span>
+      <p id='imagesList'></p>
     </div>
     <script>
         document.getElementById('decrement')
@@ -49,6 +58,10 @@
             var b = document.getElementById('b').value;
             store.dispatch(getSum(a,b));
         })
+        document.getElementById('randomImagesButton').
+          addEventListener('click', function(){
+            store.dispatch(getRandomImage)
+          })
     </script>
     <script src='index.js'></script>
   </body>
