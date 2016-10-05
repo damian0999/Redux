@@ -1,21 +1,26 @@
 function counter(currentState, action){
-  var DEFAULT_STATE = 0;
+  var DEFAULT_STATE = {result: 0, loading: false};
+  var nextState = Object.assign({}, currentState);
   if(currentState === undefined){
     nextState = DEFAULT_STATE;
     return nextState;
   }
   switch(action.type){
     case 'DECREMENT':
-      nextState = currentState - 1;
+      nextState.result = currentState.result - 1;
     return nextState;
     case 'INCREMENT':
-      nextState = currentState + 1;
+      nextState.result = currentState.result + 1;
+      nextState.loading = false;
+    return nextState;
+    case 'INCREMENT_LOADING':
+      nextState.loading = true
     return nextState;
     case 'CLEAR':
-      nextState = 0;
+      nextState.result = 0;
     return nextState;
     default:
-      nextState = currentState;
+      nextState.result = currentState.result;
     return nextState;
   }
 }

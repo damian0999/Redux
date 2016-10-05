@@ -4,7 +4,7 @@ const logger = function(store){
       console.log('currentState = ', store.getState());
       console.info('action = ', action)
       next(action);
-      console.log('currentState = ', store.getState());
+      console.log('nextState = ', store.getState());
     }
   }
 }
