@@ -1,40 +1,26 @@
-var decrement = function(){
-  return {
-    type: 'DECREMENT'
-  };
-}
-var increment = function(){
-  return{
-    type: 'INCREMENT'
-  };
-}
-var clear = function(){
-  return{
-    type: 'CLEAR'
-  };
-}
-var getSum = function(a, b){
-  return{
-    type: 'SUM',
-    a:a,
-    b:b
-  };
-}
+var decrement = () => ({
+  type: 'DECREMENT'
+});
+var increment = () => ({
+  type: 'INCREMENT'
+});
+var clear = () => ({
+  type: 'CLEAR'
+});
+var getSum = (a, b) => ({
+  type: 'SUM',
+  a:a,
+  b:b
+});
 
-var asyncIncrease = function(dispach, state){
+var asyncIncrease = (dispach, state) => {
   dispach({type: 'INCREMENT_LOADING'});
   _fakeServerApi.increaseCount(state.count.result,
-    function(data){
-      dispach({type: 'INCREMENT'});
-    }
-  );
+    data => dispach({type: 'INCREMENT'}));
 }
 
-var getRandomImage = function(dispatch, state){
+var getRandomImage = (dispatch, state) => {
   dispatch({type: 'IMAGES_LOADING'});
   var imgurAPI = 'https://api.imgur.com/3/gallery/random/random/1';
-  $.getJSON(imgurAPI).done(function(data){
-    console.log(data);
-    dispatch({type: 'IMAGES', data:data.data})
-  })
+  $.getJSON(imgurAPI).done(data => dispatch({type: 'IMAGES', data:data.data}));
 }

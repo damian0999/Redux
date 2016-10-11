@@ -40,23 +40,23 @@
       <p id='imagesList'></p>
     </div>
     <script>
-        $('#decrement').click(function(){
-            store.dispatch(decrement());
+        $('#decrement').click(() =>
+          store.dispatch(decrement())
+        )
+        $('#incrementAsync').click(() =>
+          store.dispatch(asyncIncrease)
+        )
+        $('#clear').click(() =>
+          store.dispatch(clear())
+        )
+        $('#sum').click(() => {
+          var a = $('#a').val();
+          var b = $('#b').val();
+          store.dispatch(getSum(a,b));
         })
-        $('#incrementAsync').click(function () {
-            store.dispatch(asyncIncrease);
-        })
-        $('#clear').click(function(){
-            store.dispatch(clear());
-        })
-        $('#sum').click(function(){
-            var a = $('#a').val();
-            var b = $('#b').val();
-            store.dispatch(getSum(a,b));
-        })
-        $('#randomImagesButton').click(function(){
-            store.dispatch(getRandomImage)
-          })
+        $('#randomImagesButton').click(() =>
+          store.dispatch(getRandomImage)
+        )
     </script>
     <script src='index.js'></script>
   </body>
