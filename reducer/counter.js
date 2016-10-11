@@ -1,26 +1,23 @@
-function counter(currentState, action){
-  var DEFAULT_STATE = {result: 0, loading: false};
-  var nextState = Object.assign({}, currentState);
-  if(currentState === undefined){
-    nextState = DEFAULT_STATE;
-    return nextState;
-  }
+function counter(state = {result: 0, loading: false}, action){
   switch(action.type){
     case 'DECREMENT':
-      nextState.result = currentState.result - 1;
-    return nextState;
+      return Object.assign({}, state, {
+        result: state.result - 1
+      });
     case 'INCREMENT':
-      nextState.result = currentState.result + 1;
-      nextState.loading = false;
-    return nextState;
+      return Object.assign({}, state, {
+        result: state.result + 1,
+        loading: false
+      });
     case 'INCREMENT_LOADING':
-      nextState.loading = true
-    return nextState;
+      return Object.assign({}, state, {
+        loading: true
+      });
     case 'CLEAR':
-      nextState.result = 0;
-    return nextState;
+      return Object.assign({}, state, {
+        result: 0
+      });
     default:
-      nextState.result = currentState.result;
-    return nextState;
+      return state;
   }
 }

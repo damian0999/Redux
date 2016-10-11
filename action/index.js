@@ -1,25 +1,25 @@
-var decrement = () => ({
+const decrement = () => ({
   type: 'DECREMENT'
 });
-var increment = () => ({
+const increment = () => ({
   type: 'INCREMENT'
 });
-var clear = () => ({
+const clear = () => ({
   type: 'CLEAR'
 });
-var getSum = (a, b) => ({
+const getSum = (a, b) => ({
   type: 'SUM',
   a:a,
   b:b
 });
 
-var asyncIncrease = (dispach, state) => {
+const asyncIncrease = (dispach, state) => {
   dispach({type: 'INCREMENT_LOADING'});
   _fakeServerApi.increaseCount(state.count.result,
     data => dispach({type: 'INCREMENT'}));
 }
 
-var getRandomImage = (dispatch, state) => {
+const getRandomImage = (dispatch, state) => {
   dispatch({type: 'IMAGES_LOADING'});
   var imgurAPI = 'https://api.imgur.com/3/gallery/random/random/1';
   $.getJSON(imgurAPI).done(data => dispatch({type: 'IMAGES', data:data.data}));
