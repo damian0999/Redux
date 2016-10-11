@@ -40,26 +40,21 @@
       <p id='imagesList'></p>
     </div>
     <script>
-        document.getElementById('decrement')
-          .addEventListener('click', function(){
+        $('#decrement').click(function(){
             store.dispatch(decrement());
         })
-        document.getElementById('incrementAsync')
-          .addEventListener('click', function () {
+        $('#incrementAsync').click(function () {
             store.dispatch(asyncIncrease);
         })
-        document.getElementById('clear')
-          .addEventListener('click', function(){
+        $('#clear').click(function(){
             store.dispatch(clear());
         })
-        document.getElementById('sum')
-          .addEventListener('click', function(){
-            var a = document.getElementById('a').value;
-            var b = document.getElementById('b').value;
+        $('#sum').click(function(){
+            var a = $('#a').val();
+            var b = $('#b').val();
             store.dispatch(getSum(a,b));
         })
-        document.getElementById('randomImagesButton').
-          addEventListener('click', function(){
+        $('#randomImagesButton').click(function(){
             store.dispatch(getRandomImage)
           })
     </script>
